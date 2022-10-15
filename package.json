@@ -1,5 +1,5 @@
 {
-  "name": "01-todo-list",
+  "name": "github-blog",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
