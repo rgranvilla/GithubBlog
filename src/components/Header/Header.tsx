@@ -1,7 +1,7 @@
 import logo from '../../assets/logo.svg';
 import leftEffect from '../../assets/left-effect.svg';
 import rightEffect from '../../assets/right-effect.svg';
-import { Wrapper } from './styles';
+import { Wrapper } from './Header.styles';
 
 function Header() {
   return (
