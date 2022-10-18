@@ -1,22 +1,27 @@
 import avatar from '../../assets/avatar.svg';
 import github from '../../assets/github.svg';
-import { FaGithub } from 'react-icons/fa';
-import { HiOfficeBuilding, HiUsers } from 'react-icons/hi';
-import { HiOutlineArrowTopRightOnSquare } from 'react-icons/hi2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faBuilding,
+  faUserGroup,
+  faArrowUpRightFromSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
-import { Avatar, ContentWrapper, ProfileContainer, WrapperItens } from './styles';
+import { Avatar, ContentWrapper, ProfileContainer, WrapperItens } from './Profile.styles';
 
 function Profile() {
   return (
     <ProfileContainer>
       <Avatar src={avatar} alt="" />
       <ContentWrapper>
-        <div className="header">
+        <header>
           <span>Cameron Williamson</span>
           <a href="#">
-            <img src={github} />
+            <span>GITHUB</span>
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </a>
-        </div>
+        </header>
         <div className="content">
           <span>
             Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa
@@ -25,18 +30,18 @@ function Profile() {
         </div>
         <div className="footer">
           <WrapperItens>
-            <FaGithub size={18} color="#3A536B" />
+            <FontAwesomeIcon icon={faGithub} />
             <span>cameronwll</span>
           </WrapperItens>
 
           <WrapperItens>
-            <HiOfficeBuilding size={18} color="#3A536B" />
-            <span>cameronwll</span>
+            <FontAwesomeIcon icon={faBuilding} />
+            <span>Rocketseat</span>
           </WrapperItens>
 
           <WrapperItens>
-            <HiUsers size={18} color="#3A536B" />
-            <span>cameronwll</span>
+            <FontAwesomeIcon icon={faUserGroup} />
+            <span>32 seguidores</span>
           </WrapperItens>
         </div>
       </ContentWrapper>

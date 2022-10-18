@@ -29,15 +29,25 @@ export const ContentWrapper = styled.div`
   width: 100%;
   padding: 2rem;
 
-  .header {
+  header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     font-weight: bold;
     font-size: 1.5rem;
 
     a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-size: 0.75rem;
+      text-decoration: none;
+      color: ${(props) => props.theme['brand-blue']};
+
+      &:hover {
+        border-bottom: 1px solid ${(props) => props.theme['brand-blue']};
+      }
     }
   }
 
@@ -47,6 +57,10 @@ export const ContentWrapper = styled.div`
   .footer {
     display: flex;
     gap: 1.5rem;
+
+    svg {
+      color: ${(props) => props.theme['base-label']};
+    }
   }
 `;
 
