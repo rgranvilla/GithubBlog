@@ -8,7 +8,6 @@ function DefaultLayout() {
     <LayoutContainer>
       <Header />
       <ContentWrapper>
-        <Profile />
         <Outlet />
       </ContentWrapper>
     </LayoutContainer>
