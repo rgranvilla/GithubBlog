@@ -13,11 +13,14 @@ export const ProfileContainer = styled.div`
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 `;
 
-export const Avatar = styled.img`
+export const Avatar = styled.div`
   padding: 2rem 0;
   padding-left: 2.5rem;
 
-  border-radius: 8px;
+  img {
+    height: 100%;
+    border-radius: 8px;
+  }
 `;
 
 export const ContentWrapper = styled.div`
