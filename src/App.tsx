@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { GithubBlogContextProvider } from './contexts/GithubBlogContext';
 import { Router } from './Router';
 
 import { GlobalStyles } from './styles/global';
@@ -10,7 +11,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <GithubBlogContextProvider>
+          <Router />
+        </GithubBlogContextProvider>
       </BrowserRouter>
       <GlobalStyles />
     </ThemeProvider>

@@ -7,36 +7,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { Avatar, ContentWrapper, ProfileContainer, WrapperItens } from './Profile.styles';
-import { useEffect, useState } from 'react';
-
-interface Repository {
-  avatar_url: string;
-  name: string;
-  html_url: string;
-  bio: string;
-  login: string;
-  company: string;
-  followers: number;
-}
+import { useContext } from 'react';
+import { GithubBlogContext } from '../../contexts/GithubBlogContext';
 
 function Profile() {
-  const [repositories, setRepositories] = useState<Repository>({
-    avatar_url: '',
-    name: '',
-    html_url: '',
-    bio: '',
-    login: '',
-    company: '',
-    followers: 0,
-  });
-
-  useEffect(() => {
-    fetch('https://api.github.com/users/rgranvilla')
-      .then((response) => response.json())
-      .then((data) => setRepositories(data));
-  }, []);
-
-  const { avatar_url, name, html_url, bio, login, company, followers } = repositories;
+  const { user } = useContext(GithubBlogContext);
+  const { avatar_url, name, html_url, bio, login, company, followers } = user;
 
   return (
     <ProfileContainer>

@@ -1,3 +1,7 @@
+import { useContext, useEffect, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarDay,
@@ -5,12 +9,23 @@ import {
   faArrowUpRightFromSquare,
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { GithubBlogContext, IssuesDTO } from '../../contexts/GithubBlogContext';
+
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { PostInfoContainer, WrapperItens } from './PostInfo.styles';
-import { useNavigate } from 'react-router-dom';
 
 function PostInfo() {
   const navigate = useNavigate();
+  const { issueNumber } = useParams();
+  const { getPost, activedPost } = useContext(GithubBlogContext);
+
+  const { html_url, title, user, created_at, comments } = activedPost;
+
+  useEffect(() => {
+    issueNumber ? getPost(issueNumber) : null;
+  }, []);
+
   return (
     <PostInfoContainer>
       <header>
@@ -19,28 +34,33 @@ function PostInfo() {
           VOLTAR
         </div>
 
-        <a href="#Github">
+        <a href={html_url} target="blank">
           <span>VER NO GITHUB</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </header>
 
-      <h1>JavaScript data types and data structures</h1>
+      <h1>{title}</h1>
 
       <div className="footer">
         <WrapperItens>
           <FontAwesomeIcon icon={faGithub} />
-          <span>cameronwll</span>
+          <span>{user.login}</span>
         </WrapperItens>
 
         <WrapperItens>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <span>Há 1 dia</span>
+          <time>
+            {formatDistanceToNow(new Date(created_at), {
+              addSuffix: true,
+              locale: ptBR,
+            })}
+          </time>
         </WrapperItens>
 
         <WrapperItens>
           <FontAwesomeIcon icon={faComment} />
-          <span>5 comentários</span>
+          <span>{comments} comentários</span>
         </WrapperItens>
       </div>
     </PostInfoContainer>

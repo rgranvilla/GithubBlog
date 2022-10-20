@@ -1,18 +1,27 @@
+import { formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
+import { IssuesDTO } from '../../contexts/GithubBlogContext';
 import { PostCardContainer } from './PostCard.styles';
 
-function PostCard() {
-  const content = `Programming languages all have built-in data structures, but 
-  these often differ from one language to another. This article attempts to list 
-  the built-in data structures available in JavaScript and what properties they have.
-  These can be used to build other data structures. Wherever possible, comparisons 
-  with other languages are drawn.`;
+interface PostCardProps {
+  post: IssuesDTO;
+}
 
-  const previewContent = content.slice(0, 187);
+function PostCard({ post }: PostCardProps) {
+  const { title, created_at, body } = post;
+
+  const previewContent = body.slice(0, 187);
   return (
     <PostCardContainer>
       <header>
-        <h2>Javascript data types and data structures</h2>
-        <span>Há 1 dia</span>
+        <h2>{title}</h2>
+        <span>
+          {formatDistanceToNow(new Date(created_at), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </span>
       </header>
 
       <main>

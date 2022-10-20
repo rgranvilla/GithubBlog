@@ -1,32 +1,19 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { GithubBlogContext } from '../../contexts/GithubBlogContext';
 import { PostCard } from '../PostCard';
-import { PostLink, PostListContainer } from './PostList.styles';
+import { PostListContainer } from './PostList.styles';
 
 function PostList() {
+  const { posts } = useContext(GithubBlogContext);
+
   return (
     <PostListContainer>
-      <PostLink href="#1">
-        <PostCard />
-      </PostLink>
-
-      <PostLink href="#2">
-        <PostCard />
-      </PostLink>
-
-      <PostLink href="#3">
-        <PostCard />
-      </PostLink>
-
-      <PostLink href="#4">
-        <PostCard />
-      </PostLink>
-
-      <PostLink href="#5">
-        <PostCard />
-      </PostLink>
-
-      <PostLink href="#6">
-        <PostCard />
-      </PostLink>
+      {posts.map((post) => (
+        <Link to={`/post/${post.number}`} key={post.number}>
+          <PostCard post={post} />
+        </Link>
+      ))}
     </PostListContainer>
   );
 }
